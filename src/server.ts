@@ -5,7 +5,8 @@ import { routes } from "./routes";
 const app = fastify({ logger: true });
 
 app.setErrorHandler((error, request, reply) => {
-  reply.code(400).send({ message: error.message });
+  console.error("Erro no servidor Fastify:", error);
+  reply.code(500).send({ message: "Erro interno no servidor" });
 });
 
 const start = async () => {
