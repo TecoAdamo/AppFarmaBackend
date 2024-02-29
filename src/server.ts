@@ -9,7 +9,11 @@ app.setErrorHandler((error, request, reply) => {
 });
 
 const start = async () => {
-  await app.register(cors);
+  await app.register(cors, {
+    origin: "*", // ou especifique as origens permitidas
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    optionsSuccessStatus: 204,
+  });
   await app.register(routes);
 
   try {
