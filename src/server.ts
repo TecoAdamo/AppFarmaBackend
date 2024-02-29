@@ -10,15 +10,11 @@ app.setErrorHandler((error, request, reply) => {
 });
 
 const start = async () => {
-  await app.register(cors, {
-    origin: "*", // ou especifique as origens permitidas
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    optionsSuccessStatus: 204,
-  });
+  await app.register(cors);
   await app.register(routes);
 
   try {
-    await app.listen({ port: 3333, host: "0.0.0.0" });
+    await app.listen({ port: 3333 });
   } catch (error) {
     process.exit(1);
   }
